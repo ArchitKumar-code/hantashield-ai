@@ -38,7 +38,7 @@ def calculate_hantavirus_risk(city):
     if risk_score < 35:
         category = "LOW"
 
-    elif risk_score < 65:
+    elif risk_score < 50:
         category = "MODERATE"
 
     else:
