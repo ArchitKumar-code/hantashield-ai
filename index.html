@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>HantaShield AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- HERO SECTION -->
+
+    <div class="main">
+
+        <div class="box"></div>
+
+        <!-- NAVBAR -->
+
+        <nav>
+
+            <div class="logo-container">
+
+                <img src="assets/images/logo.jpeg"
+                     alt="HantaShield Logo"
+                     class="logo-img">
+
+                <h1 class="logo">
+                    HantaShield AI
+                </h1>
+
+            </div>
+
+            <div>
+
+                <button class="btn">
+                    Live Data
+                </button>
+
+                <button class="btn btn-red-sm">
+                    Emergency Alerts
+                </button>
+
+            </div>
+
+        </nav>
+
+        <!-- HERO -->
+
+        <div class="hero">
+
+            <span>
+                Predict Hantavirus Outbreaks Before They Spread
+            </span>
+
+            <div class="hero-buttons">
+
+                <input type="text"
+                       placeholder="Enter region or district">
+
+                <button class="btn btn-red"
+                        onclick="analyzeRisk()">
+
+                    Analyze Risk
+
+                </button>
+
+            </div>
+
+            <!-- RESULT BOX -->
+
+            <div id="result-box"></div>
+
+        </div>
+
+    </div>
+
+    <div class="separation"></div>
+
+    <!-- FAQ -->
+
+    <section class="faq">
+
+        <h2>Hantavirus Information Center</h2>
+
+        <!-- FAQ 1 -->
+
+        <div class="faqbox">
+
+            <div class="faq-question">
+
+                <span>Symptoms</span>
+
+                <span class="plus">+</span>
+
+            </div>
+
+            <div class="faq-answer">
+
+                Hantavirus symptoms include fever,
+                muscle pain, fatigue, chills,
+                headaches, nausea and breathing
+                difficulty in severe stages.
+
+                Early medical attention can improve
+                survival outcomes.
+
+            </div>
+
+        </div>
+
+        <!-- FAQ 2 -->
+
+        <div class="faqbox">
+
+            <div class="faq-question">
+
+                <span>Mode of Transmission</span>
+
+                <span class="plus">+</span>
+
+            </div>
+
+            <div class="faq-answer">
+
+                Hantavirus spreads through exposure
+                to infected rodent urine, saliva
+                and droppings.
+
+                Humans may inhale contaminated
+                airborne particles.
+
+            </div>
+
+        </div>
+
+        <!-- FAQ 3 -->
+
+        <div class="faqbox">
+
+            <div class="faq-question">
+
+                <span>Environmental Risk Factors</span>
+
+                <span class="plus">+</span>
+
+            </div>
+
+            <div class="faq-answer">
+
+                High humidity, heavy rainfall,
+                dense vegetation and flood-prone
+                regions may increase rodent activity
+                and environmental vulnerability.
+
+            </div>
+
+        </div>
+
+        <!-- FAQ 4 -->
+
+        <div class="faqbox">
+
+            <div class="faq-question">
+
+                <span>About HantaShield AI</span>
+
+                <span class="plus">+</span>
+
+            </div>
+
+            <div class="faq-answer">
+
+                HantaShield AI combines
+                environmental analytics,
+                climate intelligence and
+                epidemiological reasoning
+                to estimate hantavirus
+                vulnerability levels.
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <div class="separation"></div>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="questions">
+
+            HantaShield AI • Predict • Prevent • Protect
+
+        </div>
+
+        <div class="disclaimer">
+
+            HantaShield AI provides environmental
+            vulnerability estimation and is not
+            a medical diagnostic system.
+
+        </div>
+
+    </footer>
+
+    <!-- FAQ SCRIPT -->
+
+    <script>
+
+        const faqBoxes =
+            document.querySelectorAll(".faqbox");
+
+        faqBoxes.forEach(box => {
+
+            box.addEventListener("click", () => {
+
+                box.classList.toggle("active");
+
+            });
+
+        });
+
+    </script>
+
+    <!-- ANALYZE SCRIPT -->
+
+    <script>
+
+async function analyzeRisk() {
+
+    const city =
+        document.querySelector("input").value;
+
+    const resultBox =
+        document.getElementById("result-box");
+
+    resultBox.style.display = "block";
+
+    resultBox.innerHTML = `
+        <p class="loading">
+            Analyzing environmental conditions...
+        </p>
+    `;
+
+    try {
+
+        const response = await fetch(
+            `http://127.0.0.1:8000/analyze?city=${city}`
+        );
+
+        const data = await response.json();
+
+        let riskClass = "";
+
+        if (data.risk_category === "LOW") {
+
+            riskClass = "low-risk";
+
+        }
+
+        else if (data.risk_category === "MODERATE") {
+
+            riskClass = "medium-risk";
+
+        }
+
+        else {
+
+            riskClass = "high-risk";
+
+        }
+
+        resultBox.innerHTML = `
+
+            <h2 class="${riskClass}">
+                ${data.risk_category} RISK
+            </h2>
+
+            <p>
+                <strong>City:</strong>
+                ${data.city}
+            </p>
+
+            <p>
+                <strong>Coordinates:</strong>
+                ${data.coordinates.latitude},
+                ${data.coordinates.longitude}
+            </p>
+
+            <p>
+                <strong>Humidity:</strong>
+                ${data.humidity}%
+            </p>
+
+            <p>
+                <strong>AQI:</strong>
+                ${data.aqi}
+            </p>
+
+            <p>
+                <strong>Precipitation:</strong>
+                ${data.precipitation}
+            </p>
+
+            <p>
+                <strong>Vegetation Index:</strong>
+                ${data.vegetation_index}
+            </p>
+
+            <p>
+                <strong>Estimated Rodent Risk:</strong>
+                ${data.estimated_rodent_risk}
+            </p>
+
+            <p>
+                <strong>Flood Risk:</strong>
+                ${data.flood_risk}
+            </p>
+
+            <p>
+                <strong>Vulnerability Score:</strong>
+                ${data.vulnerability_percentage}%
+            </p>
+
+        `;
+
+    }
+
+    catch(error) {
+
+        resultBox.innerHTML = `
+            <p class="high-risk">
+                Failed to analyze risk.
+            </p>
+        `;
+
+        console.log(error);
+    }
+}
+
+    </script>
+
+</body>
+
+</html>

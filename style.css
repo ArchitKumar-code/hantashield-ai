@@ -1,0 +1,604 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* BODY */
+
+body {
+    background-color: #050505;
+    overflow-x: hidden;
+    color: white;
+}
+
+/* HERO SECTION */
+
+.main {
+
+    background-image:
+        linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.15)
+        ),
+        url("assets/images/hanta-bg.png");
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    height: 100vh;
+
+    position: relative;
+}
+
+/* OVERLAY */
+
+.main .box {
+
+    height: 100vh;
+    width: 100%;
+
+    opacity: 0.2;
+
+    position: absolute;
+    top: 0;
+
+    background-color: black;
+}
+
+/* NAVBAR */
+
+nav {
+
+    max-width: 80vw;
+    height: 100px;
+
+    margin: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: relative;
+    z-index: 10;
+}
+
+/* LOGO CONTAINER */
+
+.logo-container {
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+/* LOGO IMAGE */
+
+.logo-img {
+
+    width: 55px;
+    height: 55px;
+
+    object-fit: contain;
+
+    border-radius: 50%;
+}
+
+/* LOGO */
+
+.logo {
+
+    color: white;
+
+    font-size: 28px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    text-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+}
+
+/* BUTTONS */
+
+.btn {
+
+    padding: 8px 18px;
+
+    margin-left: 10px;
+
+    color: white;
+
+    font-size: 14px;
+
+    background-color: rgba(255,255,255,0.08);
+
+    border: 1px solid rgba(255,255,255,0.3);
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.btn:hover {
+
+    background-color: rgba(255,255,255,0.15);
+}
+
+/* RED BUTTON */
+
+.btn-red {
+
+    background: linear-gradient(
+        45deg,
+        #ff0000,
+        #ff4d4d
+    );
+
+    border: none;
+
+    padding: 12px 28px;
+
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.btn-red:hover {
+
+    transform: scale(1.05);
+
+    box-shadow: 0 0 20px red;
+}
+
+/* SMALL RED BUTTON */
+
+.btn-red-sm {
+
+    background-color: red;
+}
+
+/* HERO */
+
+.hero {
+
+    height: calc(100% - 100px);
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+    z-index: 10;
+
+    padding: 0 20px;
+}
+
+/* MAIN TEXT */
+
+.hero span {
+
+    font-size: 64px;
+
+    font-weight: 700;
+
+    max-width: 1000px;
+
+    color: #ff4d4d;
+
+    line-height: 1.2;
+
+    text-shadow:
+        0 0 25px rgba(255,0,0,0.7);
+}
+
+/* HERO BUTTONS */
+
+.hero-buttons {
+
+    display: flex;
+
+    gap: 16px;
+
+    margin-top: 40px;
+}
+
+/* INPUT */
+
+.main input {
+
+    padding: 14px 120px 14px 18px;
+
+    color: white;
+
+    font-size: 15px;
+
+    background-color:
+        rgba(23,23,23,0.7);
+
+    border:
+        1px solid rgba(255,255,255,0.3);
+
+    border-radius: 6px;
+}
+
+.main input:focus {
+
+    outline: none;
+
+    border: 1px solid red;
+
+    box-shadow: 0 0 10px red;
+}
+
+/* RESULT BOX */
+
+#result-box {
+
+    margin-top: 40px;
+
+    width: 700px;
+    max-width: 90vw;
+
+    background: rgba(10,10,10,0.92);
+
+    border:
+        1px solid rgba(255,0,0,0.3);
+
+    border-radius: 16px;
+
+    padding: 30px;
+
+    text-align: left;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 0 30px rgba(255,0,0,0.15);
+
+    display: none;
+
+    animation: fadeIn 0.5s ease;
+}
+
+/* RESULT TITLE */
+
+#result-box h2 {
+
+    font-size: 36px;
+
+    margin-bottom: 20px;
+}
+
+/* RESULT PARAGRAPHS */
+
+#result-box p {
+
+    margin: 12px 0;
+
+    font-size: 18px;
+
+    color: #e5e5e5;
+}
+
+/* RISK COLORS */
+
+.low-risk {
+
+    color: #3cff73;
+}
+
+.medium-risk {
+
+    color: #ffd93c;
+}
+
+.high-risk {
+
+    color: #ff3c3c;
+}
+
+/* LOADING */
+
+.loading {
+
+    font-size: 20px;
+
+    color: #ff4d4d;
+
+    animation: pulse 1s infinite;
+}
+
+/* SEPARATION */
+
+.separation {
+
+    height: 3px;
+
+    background: linear-gradient(
+        to right,
+        transparent,
+        red,
+        transparent
+    );
+}
+
+/* FAQ SECTION */
+
+.faq {
+
+    background-color: #050505;
+
+    padding: 90px 20px;
+}
+
+/* FAQ HEADING */
+
+.faq h2 {
+
+    text-align: center;
+
+    font-size: 52px;
+
+    margin-bottom: 50px;
+
+    color: #ff4d4d;
+}
+
+/* FAQ BOX */
+
+.faqbox {
+
+    max-width: 70vw;
+
+    margin: 22px auto;
+
+    padding: 28px;
+
+    background-color: #111111;
+
+    border-left: 4px solid red;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: 0.4s;
+}
+
+.faqbox:hover {
+
+    background-color: #1f1f1f;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 0 20px rgba(255,0,0,0.2);
+}
+
+/* QUESTION */
+
+.faq-question {
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 24px;
+    font-weight: 500;
+}
+
+/* PLUS */
+
+.plus {
+
+    font-size: 34px;
+
+    color: #ff4d4d;
+
+    transition: 0.3s;
+}
+
+/* ANSWER */
+
+.faq-answer {
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    color: #d6d6d6;
+
+    transition: all 0.4s ease;
+
+    margin-top: 0;
+}
+
+/* ACTIVE FAQ */
+
+.faqbox.active .faq-answer {
+
+    max-height: 300px;
+
+    opacity: 1;
+
+    margin-top: 20px;
+}
+
+/* ROTATE PLUS */
+
+.faqbox.active .plus {
+
+    transform: rotate(45deg);
+}
+
+/* FOOTER */
+
+footer {
+
+    max-width: 80vw;
+
+    margin: auto;
+
+    padding: 60px 0;
+}
+
+/* FOOTER TEXT */
+
+.questions {
+
+    text-align: center;
+
+    font-size: 22px;
+
+    color: #ff4d4d;
+}
+
+/* DISCLAIMER */
+
+.disclaimer {
+
+    margin-top: 15px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    color: #999;
+}
+
+/* ANIMATIONS */
+
+@keyframes pulse {
+
+    0% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.4;
+    }
+}
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(10px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 1200px) {
+
+    nav {
+
+        max-width: 92vw;
+    }
+
+    .hero span {
+
+        font-size: 42px;
+    }
+
+    .hero-buttons {
+
+        flex-direction: column;
+    }
+
+    .main input {
+
+        padding: 14px 80px 14px 18px;
+    }
+
+    .faq h2 {
+
+        font-size: 36px;
+    }
+
+    .faqbox {
+
+        max-width: 90vw;
+    }
+
+    .faq-question {
+
+        font-size: 18px;
+    }
+
+    .faq-answer {
+
+        font-size: 16px;
+    }
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 700px) {
+
+    .hero span {
+
+        font-size: 32px;
+    }
+
+    .logo {
+
+        font-size: 24px;
+    }
+
+    .btn-red {
+
+        width: 100%;
+    }
+
+    .questions {
+
+        font-size: 18px;
+    }
+
+    #result-box {
+
+        padding: 20px;
+    }
+
+    #result-box h2 {
+
+        font-size: 28px;
+    }
+
+    #result-box p {
+
+        font-size: 16px;
+    }
+}
